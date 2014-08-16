@@ -33,13 +33,9 @@ BasicSim.prototype.inputHandler = function(){
 	this.dateText.visible = false;
 	this.hourText.visible = false;
 	if(this.planet.input.pointerOver()){
-		this.timeText.x = this.planet.x + this.planet.input.pointerX()+50;
-		this.timeText.y = this.planet.y + this.planet.input.pointerY()+50;
 		this.timeText.visible = true;
 	}
 	if(this.satellite.input.pointerOver()){
-		this.dateText.x = this.satellite.x + this.satellite.input.pointerX()+20;
-		this.dateText.y = this.satellite.y + this.satellite.input.pointerY()+5;
 		this.dateText.visible = true;
 	}
 	if(this.star.input.pointerOver()){
@@ -137,8 +133,12 @@ BasicSim.prototype.setUpText = function(){
 					{ font: "30pt Courier", fill: "#8ae234", stroke: "#8ae234", strokeThickness: 2 });
 
 	//all these three texts are automatically set to invisible every update loop
-	this.timeText = this.add.text(0,0,'',this.smallFont);
-	this.dateText = this.add.text(0,0,'',this.smallFont);
+	this.timeText = this.add.text(this.world.centerX,this.world.height,'',this.smallFont);
+	this.timeText.anchor.setTo(0.5,1);
+	this.timeText.align = 'center';
+	this.dateText = this.add.text(this.world.centerX,this.world.height,'',this.smallFont);
+	this.dateText.anchor.setTo(0.5,1);
+	this.dateText.align = 'center';
 	this.hourText = this.add.text(this.world.centerX,this.world.centerY+100,'',this.smallFont);
 	this.hourText.anchor.setTo(0.5,0.5);
 	this.hourText.align = 'center';
